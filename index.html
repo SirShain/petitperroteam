@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz de Física para Marinheiros</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(45deg, #007BFF, #00C853);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            min-height: 90vh;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+        .question {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .options button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+        .correct {
+            background-color: green !important;
+            color: white;
+        }
+        .incorrect {
+            background-color: red !important;
+            color: white;
+        }
+        .explanation-box {
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+            display: none;
+        }
+        .explanation {
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        #final-message {
+            display: none;
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 20px;
+            color: yellow;
+        }
+        .next-button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .next-button:hover {
+            background-color: #218838;
+        }
+		.footer {
+    position: fixed; /* Mantém fixo na tela */
+    bottom: 0; /* Alinha na parte inferior */
+    left: 50%; /* Move o elemento para o centro */
+    transform: translateX(-50%); /* Ajusta para centralizar */
+    background: rgba(0, 0, 0, 0.5); /* Fundo semi-transparente */
+    color: white; /* Texto branco */
+    padding: 10px 20px; /* Espaçamento interno */
+    width: 100%; /* Largura total */
+    text-align: center; /* Texto centralizado */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Quiz de Física para Marinheiros</h1>
+        <div id="quiz"></div>
+        <div id="explanation-box" class="explanation-box">
+            <div id="explanation" class="explanation"></div>
+            <button class="next-button" onclick="nextQuestion()">Prosseguir</button>
+        </div>
+        <div id="final-message">Eu confio que você é capaz de qualquer coisa, meu amor! Você consegue, você é capaz! 💙</div>
+    </div>
+	<div class="footer">
+        &copy; 2025 Pedro Tavernard. Todos os direitos reservados.
+		</div>
+    <script>
+        const questions = [
+            {
+                question: "1. Um marinheiro observa que, ao soltar uma boia do convés de um navio, ela leva 3 segundos para atingir a superfície do mar. Considerando a aceleração da gravidade como 10 m/s² e desprezando a resistência do ar, qual é a altura do convés em relação ao nível do mar?",
+                options: ["30m", "45m", "60m", "90m"],
+                correct: 1,
+                explanation: "Fórmula principal: h = 1/2 * g * t². Substituindo os valores: h = 1/2 * 10 * 3² = 45 m. O convés do navio está a 45 metros acima do nível do mar."
+            },
+            {
+                question: "2. Durante um treinamento, um marinheiro precisa calcular a força resultante que atua em uma âncora de 50 kg quando é puxada verticalmente para cima com uma aceleração de 2 m/s². Considere a aceleração da gravidade como 10 m/s².",
+                options: ["500N", "550N", "600N", "650N"],
+                correct: 2,
+                explanation: "Fórmula principal: F = m * (g + a). Substituindo: F = 50 * (10 + 2) = 600 N. A força necessária para puxar a âncora é 600 N."
+            },
+            {
+                question: "3. Em uma missão de resgate, um helicóptero paira a 100 metros acima do nível do mar. Um objeto é deixado cair do helicóptero. Desprezando a resistência do ar e considerando a aceleração da gravidade como 10 m/s², qual será a velocidade do objeto ao atingir a água?",
+                options: ["40 m/s", "50 m/s", "48 m/s", "44 m/s"],
+                correct: 3,
+                explanation: "Fórmula principal: v = √(2 * g * h). Substituindo os valores: v = √(2 * 10 * 100) ≈ 44,72 m/s. O objeto atinge a água com aproximadamente 44,7 m/s."
+            },
+            {
+                question: "4. Um navio em movimento uniforme percorre uma distância de 60 km em 2 horas. Se a potência desenvolvida pelos motores é de 300 kW, qual é a força de resistência que o navio enfrenta durante o trajeto?",
+                options: ["36 kN", "30 kN", "40 kN", "45 kN"],
+                correct: 0,
+                explanation: "Fórmula principal: P = F * v. Calculando a velocidade: v = 60000 m / 7200 s ≈ 8.33 m/s. A força de resistência é F = P / v = 300000 / 8.33 ≈ 36 kN."
+            },
+            {
+                question: "5. Durante uma patrulha noturna, um marinheiro observa um farol que emite flashes de luz a cada 6 segundos. Sabendo que a velocidade da luz é de aproximadamente 3 × 10⁸ m/s e que o som viaja a 340 m/s, o marinheiro percebe o flash e ouve o som associado ao mesmo 5 segundos depois. Qual é a distância entre o marinheiro e o farol?",
+                options: ["1700 m", "1500 m", "1800 m", "2000 m"],
+                correct: 0,
+                explanation: "Fórmula principal: d = v * t. Para o som: d = 340 * 5 = 1700 m. A distância entre o marinheiro e o farol é 1700 m."
+            },
+            {
+                question: "6. Um marinheiro precisa calcular a pressão exercida por uma caixa de 200 N que possui uma base de 0,5 m² sobre o convés do navio. Qual é essa pressão?",
+                options: ["300 Pa", "400 Pa", "500 Pa", "600 Pa"],
+                correct: 1,
+                explanation: "Fórmula principal: P = F / A. Substituindo: P = 200 / 0.5 = 400 Pa. A pressão exercida pela caixa é 400 Pa."
+            },
+            {
+                question: "7. Durante um exercício, um marinheiro lança uma corda horizontalmente com uma velocidade de 10 m/s de uma altura de 5 metros acima do nível do mar. Desprezando a resistência do ar e considerando a aceleração da gravidade como 10 m/s², qual será a distância horizontal que a corda percorrerá antes de atingir a água?",
+                options: ["5 m", "8 m", "10 m", "12 m"],
+                correct: 2,
+                explanation: "Fórmula principal: x = v * t. O tempo de queda é t = √(2 * h / g) ≈ 1 s. A distância horizontal é x = 10 * 1 = 10 m."
+            },
+            {
+                question: "8. Em uma missão, um submarino está a uma profundidade de 50 metros abaixo do nível do mar, onde a pressão é de aproximadamente 600 kPa. Sabendo que a densidade da água do mar é de 1.025 kg/m³ e considerando a aceleração da gravidade como 10 m/s², qual é a pressão atmosférica ao nível do mar?",
+                options: ["75 kPa", "100 kPa", "87.5 kPa", "120 kPa"],
+                correct: 2,
+                explanation: "Fórmula principal: P0 = P - ρ * g * h. Substituindo: P0 = 600000 - (1025 * 10 * 50) = 87500 Pa = 87.5 kPa. A pressão atmosférica é 87.5 kPa."
+            },
+            {
+                question: "9. Um marinheiro precisa determinar a frequência de uma onda que se propaga no mar com velocidade de 15 m/s e comprimento de onda de 3 metros. Qual é essa frequência?",
+                options: ["5 Hz", "3 Hz", "7 Hz", "10 Hz"],
+                correct: 0,
+                explanation: "Fórmula principal: f = v / λ. Substituindo: f = 15 / 3 = 5 Hz. A frequência da onda é 5 Hz."
+            },
+            {
+                question: "10. Durante uma tempestade, um navio é atingido por uma onda que eleva sua proa em 2 metros em relação à posição de equilíbrio. Se a massa do navio é de 10.000 kg, qual é a energia potencial gravitacional adquirida pela proa nesse momento?",
+                options: ["300 kJ", "400 kJ", "100 kJ", "200 kJ"],
+                correct: 3,
+                explanation: "Fórmula principal: Ep = m * g * h. Substituindo: Ep = 10000 * 10 * 2 = 200000 J = 200 kJ. A energia potencial adquirida é 200 kJ."
+            },
+            {
+                question: "11. Um marinheiro observa que uma bússola a bordo do navio aponta para o norte magnético, que está deslocado 10° a leste do norte geográfico. Se o navio segue uma rota apontada pela bússola, qual é o ângulo entre a rota real do navio e o norte geográfico?",
+                options: ["0°", "5°", "10°", "15°"],
+                correct: 2,
+                explanation: "O ângulo de deslocamento é 10° a leste. Portanto, a rota real está a 10° a leste do norte geográfico."
+            },
+            {
+                question: "12. Um marinheiro observa que a pressão atmosférica no navio é 101 kPa e a temperatura é de 20°C. Qual é a densidade do ar a bordo, considerando que a constante dos gases ideais é R = 287 J/(kg·K)?",
+                options: ["1.16 kg/m³", "1.25 kg/m³", "1.34 kg/m³", "1.45 kg/m³"],
+                correct: 1,
+                explanation: "Fórmula principal: ρ = P / (R * T). Substituindo: ρ = 101000 / (287 * 293) ≈ 1.25 kg/m³. A densidade do ar é 1.25 kg/m³."
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+
+        function showQuestion(index) {
+            const questionElement = document.getElementById("quiz");
+            const question = questions[index];
+            questionElement.innerHTML = `
+                <div class="question">${question.question}</div>
+                <div class="options">
+                    ${question.options.map((option, i) => `
+                        <button onclick="checkAnswer(${index}, ${i})">${option}</button>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        function checkAnswer(index, selected) {
+            const question = questions[index];
+            const optionsButtons = document.querySelectorAll('.options button');
+            const explanationElement = document.getElementById("explanation");
+
+            if (selected === question.correct) {
+                optionsButtons[selected].classList.add('correct');
+            } else {
+                optionsButtons[selected].classList.add('incorrect');
+                optionsButtons[question.correct].classList.add('correct');
+            }
+
+            optionsButtons.forEach(button => button.disabled = true);
+            explanationElement.innerText = question.explanation;
+
+            document.getElementById("explanation-box").style.display = 'block';
+        }
+
+        function nextQuestion() {
+            if (currentQuestionIndex < questions.length - 1) {
+                currentQuestionIndex++;
+                showQuestion(currentQuestionIndex);
+                document.getElementById("explanation-box").style.display = 'none';
+            } else {
+                document.getElementById("final-message").style.display = 'block';
+            }
+        }
+
+        showQuestion(currentQuestionIndex);
+    </script>
+</body>
+</html>
