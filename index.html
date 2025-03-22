@@ -104,76 +104,76 @@
     <script>
         const questions = [
             {
-                question: "1. Um marinheiro observa que, ao soltar uma boia do convés de um navio, ela leva 3 segundos para atingir a superfície do mar. Considerando a aceleração da gravidade como 10 m/s² e desprezando a resistência do ar, qual é a altura do convés em relação ao nível do mar?",
-                options: ["30m", "45m", "60m", "90m"],
+                question: "1. Durante um treinamento de salto, um marinheiro pula de um helicóptero estacionário e leva 5 segundos para atingir a água. Considerando a aceleração da gravidade como 10 m/s² e desprezando a resistência do ar, qual era a altura do helicóptero?",
+                options: ["90m", "125 m", "150m", "190m"],
                 correct: 1,
-                explanation: "Fórmula principal: h = 1/2 * g * t². Substituindo os valores: h = 1/2 * 10 * 3² = 45 m. O convés do navio está a 45 metros acima do nível do mar."
+                explanation: "Fórmula principal:  h = (1/2) g t².  h = (1/2) * 10 * (5)² = 125 m."
             },
             {
-                question: "2. Durante um treinamento, um marinheiro precisa calcular a força resultante que atua em uma âncora de 50 kg quando é puxada verticalmente para cima com uma aceleração de 2 m/s². Considere a aceleração da gravidade como 10 m/s².",
+                question: "2. Um marinheiro precisa levantar um suprimento de 40 kg por meio de um guindaste. Se a carga é acelerada para cima a 2,5 m/s², qual é a força total exercida pelo guindaste sobre o suprimento? Considere g = 10 m/s².",
                 options: ["500N", "550N", "600N", "650N"],
-                correct: 2,
-                explanation: "Fórmula principal: F = m * (g + a). Substituindo: F = 50 * (10 + 2) = 600 N. A força necessária para puxar a âncora é 600 N."
+                correct: 0,
+                explanation: "Fórmula principal: F = m (g + a).  F = 40 * (10 + 2.5) = 500 N."
             },
             {
-                question: "3. Em uma missão de resgate, um helicóptero paira a 100 metros acima do nível do mar. Um objeto é deixado cair do helicóptero. Desprezando a resistência do ar e considerando a aceleração da gravidade como 10 m/s², qual será a velocidade do objeto ao atingir a água?",
-                options: ["40 m/s", "50 m/s", "48 m/s", "44 m/s"],
+                question: "3. Um marinheiro joga um sinalizador para cima com velocidade inicial de 30 m/s a partir do convés do navio. Qual será a altura máxima atingida pelo sinalizador? Considere g = 10 m/s² e despreze a resistência do ar.",
+                options: ["40 m/s", "46 m/s", "43 m/s", "45 m/s"],
                 correct: 3,
-                explanation: "Fórmula principal: v = √(2 * g * h). Substituindo os valores: v = √(2 * 10 * 100) ≈ 44,72 m/s. O objeto atinge a água com aproximadamente 44,7 m/s."
+                explanation: "Fórmula principal: h = v² / (2g).  h = (30)² / (2 * 10) = 45 m."
             },
             {
-                question: "4. Um navio em movimento uniforme percorre uma distância de 60 km em 2 horas. Se a potência desenvolvida pelos motores é de 300 kW, qual é a força de resistência que o navio enfrenta durante o trajeto?",
-                options: ["36 kN", "30 kN", "40 kN", "45 kN"],
+                question: "4. Um submarino percorre 2 km em 5 minutos enquanto se move a uma velocidade constante. Se a potência gerada pelo motor é de 250 kW, qual é a força de resistência enfrentada pelo submarino?",
+                options: ["37 kN", "36 kN", "46 kN", "47 kN"],
                 correct: 0,
-                explanation: "Fórmula principal: P = F * v. Calculando a velocidade: v = 60000 m / 7200 s ≈ 8.33 m/s. A força de resistência é F = P / v = 300000 / 8.33 ≈ 36 kN."
+                explanation: "Fórmula principal: P = F v.  v = 2000 m / 300 s = 6.67 m/s, F = 250000 / 6.67 ≈ 37.5 kN."
             },
             {
-                question: "5. Durante uma patrulha noturna, um marinheiro observa um farol que emite flashes de luz a cada 6 segundos. Sabendo que a velocidade da luz é de aproximadamente 3 × 10⁸ m/s e que o som viaja a 340 m/s, o marinheiro percebe o flash e ouve o som associado ao mesmo 5 segundos depois. Qual é a distância entre o marinheiro e o farol?",
-                options: ["1700 m", "1500 m", "1800 m", "2000 m"],
+                question: "5. Um navio de guerra detecta um disparo de canhão inimigo pelo som da explosão, que chega 3 segundos após o clarão do disparo. Se a velocidade do som é de 340 m/s, qual a distância entre o navio e o local do disparo?",
+                options: ["1020 m", "990 m", "1000 m", "1010 m"],
                 correct: 0,
-                explanation: "Fórmula principal: d = v * t. Para o som: d = 340 * 5 = 1700 m. A distância entre o marinheiro e o farol é 1700 m."
+                explanation: "Fórmula principal: d = v * t.  d = 340 * 3 = 1020 m."
             },
             {
-                question: "6. Um marinheiro precisa calcular a pressão exercida por uma caixa de 200 N que possui uma base de 0,5 m² sobre o convés do navio. Qual é essa pressão?",
+                question: "6. Um marinheiro posiciona uma carga de 600 N sobre uma plataforma de 2 m². Qual é a pressão exercida pela carga sobre a plataforma?",
                 options: ["300 Pa", "400 Pa", "500 Pa", "600 Pa"],
-                correct: 1,
-                explanation: "Fórmula principal: P = F / A. Substituindo: P = 200 / 0.5 = 400 Pa. A pressão exercida pela caixa é 400 Pa."
-            },
-            {
-                question: "7. Durante um exercício, um marinheiro lança uma corda horizontalmente com uma velocidade de 10 m/s de uma altura de 5 metros acima do nível do mar. Desprezando a resistência do ar e considerando a aceleração da gravidade como 10 m/s², qual será a distância horizontal que a corda percorrerá antes de atingir a água?",
-                options: ["5 m", "8 m", "10 m", "12 m"],
-                correct: 2,
-                explanation: "Fórmula principal: x = v * t. O tempo de queda é t = √(2 * h / g) ≈ 1 s. A distância horizontal é x = 10 * 1 = 10 m."
-            },
-            {
-                question: "8. Em uma missão, um submarino está a uma profundidade de 50 metros abaixo do nível do mar, onde a pressão é de aproximadamente 600 kPa. Sabendo que a densidade da água do mar é de 1.025 kg/m³ e considerando a aceleração da gravidade como 10 m/s², qual é a pressão atmosférica ao nível do mar?",
-                options: ["75 kPa", "100 kPa", "87.5 kPa", "120 kPa"],
-                correct: 2,
-                explanation: "Fórmula principal: P0 = P - ρ * g * h. Substituindo: P0 = 600000 - (1025 * 10 * 50) = 87500 Pa = 87.5 kPa. A pressão atmosférica é 87.5 kPa."
-            },
-            {
-                question: "9. Um marinheiro precisa determinar a frequência de uma onda que se propaga no mar com velocidade de 15 m/s e comprimento de onda de 3 metros. Qual é essa frequência?",
-                options: ["5 Hz", "3 Hz", "7 Hz", "10 Hz"],
                 correct: 0,
-                explanation: "Fórmula principal: f = v / λ. Substituindo: f = 15 / 3 = 5 Hz. A frequência da onda é 5 Hz."
+                explanation: "Fórmula principal: P = F / A.  P = 600 / 2 = 300 Pa."
             },
             {
-                question: "10. Durante uma tempestade, um navio é atingido por uma onda que eleva sua proa em 2 metros em relação à posição de equilíbrio. Se a massa do navio é de 10.000 kg, qual é a energia potencial gravitacional adquirida pela proa nesse momento?",
-                options: ["300 kJ", "400 kJ", "100 kJ", "200 kJ"],
-                correct: 3,
-                explanation: "Fórmula principal: Ep = m * g * h. Substituindo: Ep = 10000 * 10 * 2 = 200000 J = 200 kJ. A energia potencial adquirida é 200 kJ."
-            },
-            {
-                question: "11. Um marinheiro observa que uma bússola a bordo do navio aponta para o norte magnético, que está deslocado 10° a leste do norte geográfico. Se o navio segue uma rota apontada pela bússola, qual é o ângulo entre a rota real do navio e o norte geográfico?",
-                options: ["0°", "5°", "10°", "15°"],
+                question: "7. Um bote salva-vidas é lançado de um navio a 4 metros acima da superfície do mar. Se sua velocidade horizontal inicial é de 5 m/s, qual a distância horizontal percorrida antes de atingir a água? Considere g = 10 m/s².",
+                options: ["4 m", "3 m", "4.5 m", "3.5 m"],
                 correct: 2,
-                explanation: "O ângulo de deslocamento é 10° a leste. Portanto, a rota real está a 10° a leste do norte geográfico."
+                explanation: "Fórmula principal: x = v * t.  t = sqrt(2 * 4 / 10) ≈ 0.9 s, d = 5 * 0.9 = 4.5 m."
             },
             {
-                question: "12. Um marinheiro observa que a pressão atmosférica no navio é 101 kPa e a temperatura é de 20°C. Qual é a densidade do ar a bordo, considerando que a constante dos gases ideais é R = 287 J/(kg·K)?",
-                options: ["1.16 kg/m³", "1.25 kg/m³", "1.34 kg/m³", "1.45 kg/m³"],
+                question: "8. Um submarino está submerso a 90 metros de profundidade, onde a pressão é de 1000 kPa. Sabendo que a densidade da água do mar é de 1.025 kg/m³ e g = 10 m/s², qual é a pressão atmosférica ao nível do mar?",
+                options: ["77.5 kPa", "100 kPa", "87.5 kPa", "120 kPa"],
+                correct: 0,
+                explanation: "Fórmula principal: P0 = P - ρ * g * h.  Pₐ = 1000000 - (1025 * 10 * 90) = 77.5 kPa."
+            },
+            {
+                question: "9. Uma onda no mar tem comprimento de 5 metros e se propaga com velocidade de 20 m/s. Qual é a sua frequência?",
+                options: ["4 Hz", "3 Hz", "7 Hz", "10 Hz"],
+                correct: 0,
+                explanation: "Fórmula principal: f = v / λ.  f = 20 / 5 = 4 Hz."
+            },
+            {
+                question: "10. Durante uma tempestade, uma onda eleva a popa de um navio em 4 metros. Se a massa do navio é de 15.000 kg, qual a energia potencial gravitacional adquirida?",
+                options: ["300 kJ", "400 kJ", "500 kJ", "600 kJ"],
+                correct: 3,
+                explanation: "Fórmula principal: Ep = m * g * h.  U = 15000 * 10 * 4 = 600 kJ."
+            },
+            {
+                question: "11. Um marinheiro observa que a bússola do navio aponta 8° a oeste do norte verdadeiro. Se o navio segue uma rota exata conforme a bússola, qual é o ângulo real da rota do navio em relação ao norte geográfico?",
+                options: ["2°", "6°", "8°", "10°"],
+                correct: 2,
+                explanation: "O ângulo real é 8° a oeste do norte verdadeiro."
+            },
+            {
+                question: "12. Um marinheiro deseja aquecer 2 litros de água (massa de 2 kg) de 25°C até 90°C usando um fogareiro de 600 W. Sabendo que o calor específico da água é de 4.186 J/kg·°C e desprezando perdas de calor, quanto tempo será necessário?",
+                options: ["15 min", "15.1 min", "16 min", "16.1 min"],
                 correct: 1,
-                explanation: "Fórmula principal: ρ = P / (R * T). Substituindo: ρ = 101000 / (287 * 293) ≈ 1.25 kg/m³. A densidade do ar é 1.25 kg/m³."
+                explanation: "Fórmula principal: ρ = P / (R * T).  Q = 2 * 4186 * (90 - 25) = 544 kJ, t = 544000 / 600 ≈ 15.1 min."
             }
         ];
 
